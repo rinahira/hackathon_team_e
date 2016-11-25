@@ -1,14 +1,31 @@
 {% extends 'base.html' %}
+{% load humanize %}
 
 {% block content %}
 
-<a href="../cart_list/">カートの中身を表示する</a>
-<a href="../cart_reset/">カートを空にする</a>
-<a href="../order/">注文する</a>
-{% for product in products %}
-    <h1>{{ product.name }}</h1>
-    <img src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
-    <a href="../cart_add/{{ product.id }}">カートに入れる</a>
-{% endfor %}
+<div class="skay-top-links">
+    <ul class="list-inline pull-right">
+        <li><a class="btn btn-link" href="../cart_list/">カートの中身を表示する</a></li>
+        <li><a class="btn btn-link" href="../cart_reset/">カートを空にする</a></li>
+        <li><a class="btn btn-link" href="../order/">注文する</a></li>
+    </ul>
+</div>
+
+<div class="row" style="clear: both;">
+    <ul>
+        {% for product in products %}
+        <li class="col-sm-4 skay-product-list">
+            <img class="thumbnail" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+            <h2>{{ product.name }}</h2>
+            <p style="color: gray;"><small>{{ product.description }}</small></p>
+            <p class="text-danger" style="font-size: 1.3em;"><strong>¥ {{ product.price | intcomma }}</strong></p>
+            <a href="../cart_add/{{ product.id }}">
+                <i class="glyphicon glyphicon-shopping-cart"></i>
+                カートに入れる
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 
 {% endblock %}
