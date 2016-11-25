@@ -5,10 +5,21 @@
 <a href="../cart_list/">カートの中身を表示する</a>
 <a href="../cart_reset/">カートを空にする</a>
 <a href="../order/">注文する</a>
-{% for product in products %}
-    <h1>{{ product.name }}</h1>
-    <img src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
-    <a href="../cart_add/{{ product.id }}">カートに入れる</a>
-{% endfor %}
+
+<div class="row">
+    <ul>
+        {% for product in products %}
+        <li class="col-sm-4 skay-product-list">
+            <img class="thumbnail" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <a href="../cart_add/{{ product.id }}">
+                <i class="glyphicon glyphicon-shopping-cart"></i>
+                カートに入れる
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 
 {% endblock %}

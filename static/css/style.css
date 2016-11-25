@@ -11,3 +11,8 @@ body {
 .skay-title > h1 {
     margin-left: 90px;
 }
+
+.skay-product-list {
+    padding-bottom: 30px;
+    height: 400px;
+}
