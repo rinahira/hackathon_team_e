@@ -5,17 +5,17 @@ function check(){
 
 	// 設定開始（必須にする項目を設定してください）
 
-	if(document.form1.field1.value == ""){ // 「お名前」の入力をチェック
+	if(document.form1.last_name.value == ""){ // 「お名前」の入力をチェック
 
 		flag = 1;
 
 	}
-	else if(document.form1.field2.value == ""){ // 「パスワード」の入力をチェック
+	else if(document.form1.first_name.value == ""){ // 「パスワード」の入力をチェック
 
 		flag = 1;
 
 	}
-	else if(document.form1.field3.value == ""){ // 「コメント」の入力をチェック
+	else if(document.form1.postal_code.value == ""){ // 「コメント」の入力をチェック
 
 		flag = 1;
 

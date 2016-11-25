@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{{message}}
-<h1>カート内の商品</h1>
-<table>
+
+<div class="skay-form-title"><h1>カート内の商品</h1><div>
+{% if products is not null%}
+<table class="table">
     <tr>
         <th>商品番号</th>
         <th>商品名</th>
@@ -18,55 +19,74 @@
 {% endfor %}
 </table>
 
-<h1>お客様情報の入力</h1>
-<form action="../order_execute/" method="post">
-{% csrf_token %}
-<table>
-    <tr>
-        <th>お名前 (姓)</th>
-        <td><input name="last_name" type="text" id="last_name" size="50"></td>
-        <th>(名)</th>
-        <td><input name="first_name" type="text" id="first_name" size="50"></td>
-    </tr>
-    <tr>
-        <th>郵便番号</th>
-        <td><input name="postal_code" type="text" id="postal_code" size="50"></td>
-    </tr>
-    <tr>
-        <th>都道府県</th>
-        <td><input name="prefecture" type="text" id="prefecture" size="50"></td>
-    </tr>
-    <tr>
-        <th>市区町村</th>
-        <td><input name="city" type="text" id="city" size="50"></td>
-    </tr>
-    <tr>
-        <th>番地など</th>
-        <td><input name="street1" type="text" id="street1" size="50"></td>
-    </tr>
-    <tr>
-        <th>建物名など</th>
-        <td><input name="street2" type="text" id="street2" size="50"></td>
-    </tr>
-    <tr>
-        <th>電話番号</th>
-        <td><input name="tel" type="text" id="tel" size="50"></td>
-    </tr>
-    <tr>
-        <th>メールアドレス</th>
-        <td><input name="email" type="text" id="email" size="50"></td>
-    </tr>
-    <tr>
-        <th>決済方法</th>
-        <td>
-        {% for payment in payments %}
-            <input type="radio" name="payment" id="payment_name" value="{{ payment.id }}" />
-            <label for="payment_name">{{ payment.name }}</label><br />
-        {% endfor %}
-        </td>
-    </tr>
-</table>
-<input type="submit" value="注文" />
-</form>
+<br>
+<br>
+<div class="skay-form-title"><h1>お客様情報の入力</h1><div>
+<div class="row">
+  <div class="col-md-7">
 
+
+<form action="../order_execute/" method="post" onSubmit="return check()">
+{% csrf_token %}
+
+
+     <div class="form-group">
+                 <label class="control-label col-xs-2">お名前 <span class = "skay-form-required">*</span></label>
+        <div class="col-xs-9 form-inline">
+            <label>(姓) </label><input name="last_name" class="form-control" type="text" id="last_name" >
+            <label>(名) </label><input name="first_name" class="form-control" type="text" id="first_name">
+            
+        </div>
+     </div>
+
+    
+     <div class="form-group">
+        <label for="postal_code">郵便番号 <span class = "skay-form-required">*</span></label>
+        <input name="postal_code" class="form-control" type="text" id="postal_code" size="50">
+    </div>
+     <div class="form-group">
+        <label for="prefecture">都道府県 <span class = "skay-form-required">*</span></label>
+        <input name="prefecture" class="form-control" type="text" id="prefecture" size="50">
+    </div>
+     <div class="form-group">
+        <label for="city">市区町村 <span class = "skay-form-required">*</span></label>
+        <input name="city" class="form-control" type="text" id="city" size="50">
+    </div>
+     <div class="form-group">
+        <label for="street1">番地など <span class = "skay-form-required">*</span></label>
+        <input name="street1" class="form-control" type="text" id="street1" size="50">
+    </div>
+     <div class="form-group">
+        <label for="street2">建物名など</label>
+        <input name="street2" class="form-control" type="text" id="street2" size="50">
+    </div>
+     <div class="form-group">
+        <label for="tel">電話番号 <span class = "skay-form-required">*</span></label>
+        <input name="tel"  class="form-control"type="text" id="tel" size="50">
+    </div><div class="form-group">
+     
+        <label for="email">メールアドレス <span class = "skay-form-required">*</span></label>
+        <input name="email" class="form-control" type="text" id="email" size="50">
+    </div>
+    <div class="form-group">
+     
+        <label for="payment">決済方法 <span class = "skay-form-required">*</span></label>
+        <div class="skay-form-radio">
+            <div class="radio">
+            {% for payment in payments %}
+                <input type="radio" name="payment" id="payment_name" value="{{ payment.id }}" />
+                <label for="payment_name">{{ payment.name }}</label><br />
+            {% endfor %}
+            </div>
+        </div>
+     </div>
+    </div>
+    </div>
+
+<input type="submit" class="btn btn-success" value="注文" />
+</form>
+{% else %}
+
+カートが空です。
+{% endif %}
 {% endblock %}
