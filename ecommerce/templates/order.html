@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="skay-top-links">
+    <ul class="list-inline pull-right">
+        <li><a class="btn btn-link" href="../list/">一覧に戻る</a></li>
+    </ul>
+</div>
 
 <div class="skay-form-title"><h1>カート内の商品</h1><div>
-{% if products is not null%}
+{% if products%}
 <table class="table">
     <tr>
         <th>商品番号</th>
