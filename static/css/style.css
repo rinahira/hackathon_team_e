@@ -31,3 +31,14 @@ body {
 .skay-order-button {
     background-color: #5F9649;
 }
+
+.skay-form-title > h1 {
+    color: #3b5598;
+}
+.skay-form-required  {
+    color : red;
+}
+
+.skay-form-radio  {
+    margin-left: 30px;
+}
