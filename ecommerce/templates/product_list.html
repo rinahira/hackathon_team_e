@@ -3,13 +3,15 @@
 
 {% block content %}
 
-<div class="skay-top-links">
-    <ul class="list-inline pull-right">
-        <li><a class="btn btn-link" href="../cart_list/">カートの中身を表示する</a></li>
-        <li><a class="btn btn-link" href="../cart_reset/">カートを空にする</a></li>
-        <li><a class="btn btn-link" href="../order/">注文する</a></li>
-    </ul>
-</div>
+<nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 50px;">
+            <li><a class="skay-navbar-link" href="../cart_list/">カートの中身を表示する</a></li>
+            <li><a class="skay-navbar-link" href="../cart_reset/">カートを空にする</a></li>
+            <li><a class="skay-navbar-link skay-order-button" href="../order/">注文する</a></li>
+        </ul>
+    </div>
+</nav>
 
 <div class="row" style="clear: both;">
     <ul>
