@@ -22,6 +22,7 @@
             </a>
             <h2 class="skay-brand">{{ product.name }}</h2>
             <p style="color: gray;"><small>{{ product.description }}</small></p>
+            <p class="text-danger" style="font-size: 1.3em;"><strong>残り {{ product.stock | intcomma }} 個</strong></p>
             <p class="text-danger" style="font-size: 1.3em;"><strong>¥ {{ product.price | intcomma }}</strong></p>
             <a href="../cart_add/{{ product.id }}">
                 <i class="glyphicon glyphicon-shopping-cart"></i>
