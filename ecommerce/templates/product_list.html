@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 
 {% block content %}
 
@@ -16,7 +17,8 @@
         <li class="col-sm-4 skay-product-list">
             <img class="thumbnail" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
             <h2>{{ product.name }}</h2>
-            <p>{{ product.description }}</p>
+            <p style="color: gray;"><small>{{ product.description }}</small></p>
+            <p class="text-danger" style="font-size: 1.3em;"><strong>¥ {{ product.price | intcomma }}</strong></p>
             <a href="../cart_add/{{ product.id }}">
                 <i class="glyphicon glyphicon-shopping-cart"></i>
                 カートに入れる
