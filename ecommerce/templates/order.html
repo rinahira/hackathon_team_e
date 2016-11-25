@@ -1,10 +1,17 @@
-{% extends 'base.html' %} {% block content %}
-<div class="skay-top-links">
-    <ul class="list-inline pull-right">
-        <li><a class="btn btn-link" href="../list/">商品一覧に戻る</a></li>
-    </ul>
+{% extends 'base.html' %}
+{% block content %}
+
 </div>
-<div class="skay-form-title">
+<nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 50px;">
+            <li><a class="skay-navbar-link" href="../list/">商品一覧に戻る</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="skay-form-title container">
     <h1>カート内の商品</h1>
     <div>
         {% if products%}
