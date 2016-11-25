@@ -55,7 +55,7 @@ def cart_delete(request, product_id):
 
     products = get_list_or_404(Product)
 
-    response = redirect('/ec/list/', {'products': products})
+    response = redirect('/ec/cart_list/', {'products': products})
 
     return response
 
