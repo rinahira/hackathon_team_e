@@ -26,7 +26,7 @@
                 <td><img class="thumnail" src="../../media/{{ product.image }}" alt="" width="100" height="100" border="0"/></td>
                 <td>{{ product.id | stringformat:"04d" }}</td>
                 <td>
-                    <h3>{{ product.name }}</h3>
+                    <h3 class="skay-brand">{{ product.name }}</h3>
                     <p style="color: gray;"><small>{{ product.description }}</small></p>
                 </td>
                 <td><strong>¥ {{ product.price | intcomma }}</strong></td>
@@ -35,7 +35,7 @@
         </table>
 
     {% else %}
-        <h2>カートに商品が入っていません</h2>
+        <h2 class="skay-brand">カートに商品が入っていません</h2>
     {% endif %}
 </div>
 
