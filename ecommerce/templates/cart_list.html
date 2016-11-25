@@ -28,6 +28,7 @@
                 <td>
                     <h3>{{ product.name }}</h3>
                     <p style="color: gray;"><small>{{ product.description }}</small></p>
+                    <a href="../cart_delete/{{ product.id }}">カートから削除する</a>
                 </td>
                 <td><strong>¥ {{ product.price | intcomma }}</strong></td>
             </tr>
