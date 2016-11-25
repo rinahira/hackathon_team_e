@@ -8,10 +8,13 @@ body {
     color: white;
 }
 
-.skay-title > h1 {
-    margin-left: 90px;
+.skay-title h1 {
+    margin-left: 30px;
 }
 
+.skay-top-links {
+    width: 100%;
+}
 .skay-product-list {
     padding-bottom: 30px;
     height: 400px;

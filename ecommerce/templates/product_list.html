@@ -2,11 +2,15 @@
 
 {% block content %}
 
-<a href="../cart_list/">カートの中身を表示する</a>
-<a href="../cart_reset/">カートを空にする</a>
-<a href="../order/">注文する</a>
+<div class="skay-top-links">
+    <ul class="list-inline pull-right">
+        <li><a class="btn btn-link" href="../cart_list/">カートの中身を表示する</a></li>
+        <li><a class="btn btn-link" href="../cart_reset/">カートを空にする</a></li>
+        <li><a class="btn btn-link" href="../order/">注文する</a></li>
+    </ul>
+</div>
 
-<div class="row">
+<div class="row" style="clear: both;">
     <ul>
         {% for product in products %}
         <li class="col-sm-4 skay-product-list">
