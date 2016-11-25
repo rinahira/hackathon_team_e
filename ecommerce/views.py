@@ -50,7 +50,8 @@ def cart_delete(request, product_id):
         request.session['cart'] = list()
     cart = request.session['cart']
     #   同じ商品が複数listに入っていた場合に、指定されてIDのオブジェクトをすべて削除する
-    cart = [item for item in cart if item is not str(product_id)]
+    cart = [item for item in cart if not item == str(product_id)]
+    #cart = [item for item in cart if item is not str(product_id)]
     request.session['cart'] = cart
 
     products = get_list_or_404(Product)
