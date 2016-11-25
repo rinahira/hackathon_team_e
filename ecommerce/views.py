@@ -118,6 +118,47 @@ def order_execute(request):
     お客様情報を保存し注文された商品情報を保存します。
     """
 
+    err_msg = ''
+
+    if not request.POST['first_name']:
+        err_msg = 'お名前(名)'
+    elif not request.POST['last_name']:
+        err_msg = 'お名前(姓)'
+    elif not request.POST['postal_code']:
+        err_msg = '郵便番号'
+    elif not request.POST['prefecture']:
+        err_msg = '都道府県'
+    elif not request.POST['city']:
+        err_msg = '市区町村'
+    elif not request.POST['street1']:
+        err_msg = '番地'
+    elif not request.POST['street2']:
+        err_msg = '建物名'
+    elif not request.POST['tel']:
+        err_msg = '電話番号'
+    elif not request.POST['email']:
+        err_msg = 'メールアドレス'
+    else:
+        err_msg = ''
+
+    if err_msg:
+        #   カート(セッション)内にある商品IDを取得します。
+        if not request.session.has_key('cart'):
+            request.session['cart'] = list()
+        cart = request.session['cart']
+
+        #   カートに入っている商品の情報を取得します
+        products = Product.objects.filter(id__in=cart)
+
+        #   決済方法を取得します。
+        payments = get_list_or_404(Payment)
+
+        err_msg = err_msg + 'が入力されていません'
+
+        return render(request, 'order.html', {'products': products, 'payments': payments, 'message':err_msg})
+
+
+
     #   送信されたお客様情報を保存します。
     customer = Customer(first_name=request.POST['first_name'],
                         last_name=request.POST['last_name'],
