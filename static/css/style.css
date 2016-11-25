@@ -5,6 +5,10 @@ body {
     font-family: Verdana;
 }
 
+ul {
+    list-style: none !important;
+}
+
 .skay-title {
     background-color: #3b5598;
     color: white;
