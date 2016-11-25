@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.skay-title {
+    background-color: #3b5598;
+    color: white;
+}
+
+.skay-title > h1 {
+    margin-left: 90px;
+}
