@@ -23,7 +23,11 @@
             </tr>
         {% for product in products %}
             <tr>
-                <td><img class="thumnail" src="../../media/{{ product.image }}" alt="" width="100" height="100" border="0"/></td>
+                <td>
+                     <a href="../../media/{{ product.image }}" data-lightbox="{{ product.image }}" rel="lightbox">
+                        <img class="thumnail" src="../../media/{{ product.image }}" alt="" width="100" height="100" border="0"/>
+                     </a>
+                </td>
                 <td>{{ product.id | stringformat:"04d" }}</td>
                 <td>
                     <h3 class="skay-brand">{{ product.name }}</h3>
