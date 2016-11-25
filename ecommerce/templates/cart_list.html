@@ -14,25 +14,30 @@
 
 <div style="clear: both;">
     {% if products %}
-        <table class="table">
+        <table class="table table-hover">
             <tr>
                 <th></th>
-                <th>#</th>
-                <th>商品名</th>
+                <th>商品</th>
                 <th>価格</th>
             </tr>
         {% for product in products %}
             <tr>
-                <td>
-                     <a href="../../media/{{ product.image }}" data-lightbox="{{ product.image }}" rel="lightbox">
-                        <img class="thumnail" src="../../media/{{ product.image }}" alt="" width="100" height="100" border="0"/>
-                     </a>
+                <td style="vertical-align: middle; text-align: center;">
+                    <div>
+                        <a href="../cart_delete/{{ product.id }}" class="text-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                    </div>
                 </td>
-                <td>{{ product.id | stringformat:"04d" }}</td>
                 <td>
-                    <h3 class="skay-brand">{{ product.name }}</h3>
-                    <p style="color: gray;"><small>{{ product.description }}</small></p>
-                    <a href="../cart_delete/{{ product.id }}">カートから削除する</a>
+                    <div class="pull-left" style="margin-right: 30px;">
+                        <a href="../../media/{{ product.image }}" data-lightbox="{{ product.image }}" rel="lightbox">
+                            <img class="thumnail" src="../../media/{{ product.image }}" alt="" width="100" height="100" border="0"/>
+                        </a>
+                    </div>
+                    <div>
+                        <p>#{{ product.id | stringformat:"04d" }}</p>
+                        <h3 class="skay-brand">{{ product.name }}</h3>
+                        <p style="color: gray;"><small>{{ product.description }}</small></p>
+                    </div>
                 </td>
                 <td><strong>¥ {{ product.price | intcomma }}</strong></td>
             </tr>
