@@ -18,9 +18,8 @@ ul {
     margin-left: 50px;
 }
 
-.skay-product-list {
-    padding-bottom: 30px;
-    height: 400px;
+.skay-product-list > li {
+    min-height: 500px;
 }
 
 .skay-brand {
