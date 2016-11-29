@@ -13,35 +13,54 @@
 </nav>
 
 <div style="clear: both;">
-    {% if products %}
+    {% if details %}
         <table class="table table-hover">
-            <tr>
-                <th></th>
-                <th>商品</th>
-                <th>価格</th>
-            </tr>
-        {% for product in products %}
-            <tr>
-                <td style="vertical-align: middle; text-align: center;">
-                    <div>
-                        <a href="../cart_delete/{{ product.id }}" class="text-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                    </div>
-                </td>
-                <td>
-                    <div class="pull-left" style="margin-right: 30px;">
-                        <a href="../../media/{{ product.image }}" data-lightbox="{{ product.image }}" rel="lightbox">
-                            <img class="thumnail" src="../../media/{{ product.image }}" alt="" width="100" height="100" border="0"/>
-                        </a>
-                    </div>
-                    <div>
-                        <p>#{{ product.id | stringformat:"04d" }}</p>
-                        <h3 class="skay-brand">{{ product.name }}</h3>
-                        <p style="color: gray;"><small>{{ product.description }}</small></p>
-                    </div>
-                </td>
-                <td><strong>¥ {{ product.price | intcomma }}</strong></td>
-            </tr>
-        {% endfor %}
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>商品</th>
+                    <th>個数</th>
+                    <th>価格</th>
+                    <th>小計</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>合計</strong></td>
+                    <td><p class="text-danger"><strong>¥ {{ total | intcomma }}<strong><p></td>
+                </tr>
+            </tfoot>
+            <tbody>
+                {% for detail in details %}
+                <tr>
+                    <td style="vertical-align: middle; text-align: center;">
+                        <div>
+                            <a href="../cart_delete/{{ detail.product.id }}" class="text-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="pull-left" style="margin-right: 30px;">
+                            <a href="../../media/{{ detail.product.image }}" data-lightbox="{{ detail.product.image }}" rel="lightbox">
+                                <img class="thumnail" src="../../media/{{ detail.product.image }}" alt="" width="100" height="100" border="0"/>
+                            </a>
+                        </div>
+                        <div>
+                            <p>#{{ detail.product.id | stringformat:"04d" }}</p>
+                            <h3 class="skay-brand">{{ detail.product.name }}</h3>
+                            <p style="color: gray;"><small>{{ detail.product.description }}</small></p>
+                        </div>
+                    </td>
+                    <td>
+                        <p>{{ detail.quantity }}</p>
+                    </td>
+                    <td>¥ {{ detail.product.price | intcomma }}</td>
+                    <td>¥ {{ detail.subtotal | intcomma }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
 
     {% else %}

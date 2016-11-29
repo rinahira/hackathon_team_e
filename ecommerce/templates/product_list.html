@@ -14,22 +14,29 @@
 </nav>
 
 <div class="row" style="clear: both;">
-    <ul>
+    <ul class="skay-product-list">
         {% for product in products %}
-        <li class="col-sm-4 skay-product-list">
+        <li class="col-sm-4">
             <a href="../../media/{{ product.image }}" data-lightbox="{{ product.image }}" rel="lightbox">
                 <img class="thumbnail" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
             </a>
             <h2 class="skay-brand">{{ product.name }}</h2>
             <p style="color: gray;"><small>{{ product.description }}</small></p>
             <small class="text-success">残り {{ product.stock | intcomma }} 個  </small>
-            <p class="text-danger" style="font-size: 1.3em;">
+            <p class="text-danger" style="font-size: 1.4em;">
                 <strong>¥ {{ product.price | intcomma }}</strong>
             </p>
-            <a href="../cart_add/{{ product.id }}">
-                <i class="glyphicon glyphicon-shopping-cart"></i>
-                カートに入れる
-            </a>
+            <form class="form-inline skay-cartform" action="../cart_add/{{ product.id }}/" method="post">
+                {% csrf_token %}
+                <div class="input-group" style="width: 100px;">
+                    <input name="quantity" type="number" class="form-control" required max="10" min="1" value="1">
+                    <div class="input-group-addon">個</div>
+                </div>
+                <button type="submit" class="btn btn-success">
+                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                    カートに入れる
+                </button>
+            </form>
         </li>
         {% endfor %}
     </ul>
