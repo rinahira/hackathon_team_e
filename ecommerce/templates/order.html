@@ -16,7 +16,7 @@
 <div class="skay-form-title container">
     <h1>カート内の商品</h1>
     <div>
-        {% if details%}
+        {% if details %}
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -27,8 +27,8 @@
                     <th>小計</th>
                 </tr>
             </thead>
-            {% for detail in details %}
             <tbody>
+            {% for detail in details %}
                 <tr>
                     <td>#{{ detail.product.id | stringformat:"04d" }}</td>
                     <td>{{ detail.product.name }}</td>
@@ -36,8 +36,8 @@
                     <td>¥ {{ detail.product.price | intcomma }}</td>
                     <td>¥ {{ detail.subtotal | intcomma }}</td>
                 </tr>
-            </tbody>
             {% endfor %}
+            </tbody>
             <tfoot>
                 <tr>
                     <td></td>
