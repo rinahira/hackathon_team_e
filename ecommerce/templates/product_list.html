@@ -6,8 +6,46 @@
 <nav class="navbar navbar-fixed-top" role="navigation">
     <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right" style="margin-right: 50px;">
-            <li><a class="skay-navbar-link" href="../cart_list/">カートの中身を表示する</a></li>
-            <li><a class="skay-navbar-link" href="../cart_reset/">カートを空にする</a></li>
+            <li>
+                <a class="skay-navbar-link skay-cart" href="../cart_list/">カートの中身を表示する
+                {% if details %}
+                    <div class="skay-cart_table" style="display: none;">
+                        <table class="table table-hover">
+                            <thead>
+                                <th>#</th>
+                                <th>商品名</th>
+                                <th>個数</th>
+                                <th>価格</th>
+                                <th>小計</th>
+                            </thead>
+                            <tbody>
+                                {% for detail in details %}
+                                <tr>
+                                    <td>#{{ detail.product.id | stringformat:"04d" }}</td>
+                                    <td>{{ detail.product.name }}</td>
+                                    <td>{{ detail.quantity | intcomma }}</td>
+                                    <td>¥ {{ detail.product.price | intcomma }}</td>
+                                    <td>¥ {{ detail.subtotal | intcomma }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><strong>合計</strong></td>
+                                    <td><p class="text-danger"><strong>¥ {{ total | intcomma }}</strong></p></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                {% endif %}
+                </a>
+            </li>
+            <li>
+                <a class="skay-navbar-link" href="../cart_reset/">カートを空にする</a>
+            </li>
             <li><a class="skay-navbar-link skay-order-button" href="../order/">注文する</a></li>
         </ul>
     </div>

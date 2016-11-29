@@ -15,8 +15,24 @@ def index(request):
     #   セッションにカートの情報を格納するListを定義します。
     if not request.session.has_key('cart'):
         request.session['cart'] = list()
+    
+    cart = request.session['cart']
+    in_cart = Product.objects.filter(id__in=[item['product_id'] for item in cart])
+    
+    details = []
+    total = 0
+    for product in in_cart:
+        quantity = [item['quantity'] for item in cart if item['product_id'] == str(product.id)][0]
+        subtotal = int(product.price) * int(quantity)
+        total += subtotal
 
-    response = render(request, 'product_list.html', {'products': products})
+        details.append({
+            'product': product,
+            'quantity': quantity,
+            'subtotal': subtotal
+        })
+
+    response = render(request, 'product_list.html', {'products': products, 'details': details, 'total': total})
 
     return response
 
