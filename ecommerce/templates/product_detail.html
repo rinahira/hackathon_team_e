@@ -10,11 +10,23 @@
     </div>
     <div class="col-sm-8">
         <h2 class="skay-brand"><a href="/ec/detail/{{ product.id }}">{{ product.name }}</a></h2>
-        <small class="text-success">残り {{ product.stock | intcomma }} 個  </small>
-        <p class="text-danger" style="font-size: 1.4em;">
+        <p class="text-danger" style="font-size: 1.6em;">
             <strong>¥ {{ product.price | intcomma }}</strong>
         </p>
+        <span class="text-success">残り {{ product.stock | intcomma }} 個</span>
+        <form class="form-inline skay-cartform" action="../cart_add/{{ product.id }}/" method="post">
+            {% csrf_token %}
+            <div class="input-group" style="width: 100px;">
+                <input name="quantity" type="number" class="form-control" required max="10" min="1" value="1">
+                <div class="input-group-addon">個</div>
+            </div>
+            <button type="submit" class="btn btn-success" style="display: block; margin-top: 10px;">
+                <i class="glyphicon glyphicon-shopping-cart"></i>
+                カートに入れる
+            </button>
+        </form>
     </div>
+    <hr style="width: 100%; color: gray; height: 1px; background-color:gray;" />
     <div class="col-sm-12">
         <p style="color: gray;">{{ product.description }}</p>
     </div>
