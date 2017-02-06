@@ -58,7 +58,7 @@
             <a href="../../media/{{ product.image }}" data-lightbox="{{ product.image }}" rel="lightbox">
                 <img class="thumbnail" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
             </a>
-            <h2 class="skay-brand">{{ product.name }}</h2>
+            <h2 class="skay-brand"><a href="/ec/detail/{{ product.id }}">{{ product.name }}</a></h2>
             <p style="color: gray;"><small>{{ product.description }}</small></p>
             <small class="text-success">残り {{ product.stock | intcomma }} 個  </small>
             <p class="text-danger" style="font-size: 1.4em;">

@@ -1,5 +1,5 @@
 import datetime
-from django.shortcuts import redirect, render, get_list_or_404, render_to_response
+from django.shortcuts import redirect, render, get_list_or_404, render_to_response, get_object_or_404
 from ecommerce.models import *
 
 # Create your views here.
@@ -33,6 +33,16 @@ def index(request):
         })
 
     response = render(request, 'product_list.html', {'products': products, 'details': details, 'total': total})
+
+    return response
+
+def product_detail(request, product_id):
+    """
+    商品の詳細を表示するビューです。
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    
+    response = render(request, 'product_detail.html', {'product': product})
 
     return response
 

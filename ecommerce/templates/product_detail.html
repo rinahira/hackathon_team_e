@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+<div class="container">
+    <div class="col-sm-4">
+        <a class="col-sm-4" href="/media/{{ product.image }}" data-lightbox="{{ product.image }}" rel="lightbox">
+            <img class="thumbnail" src="/media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+        </a>
+    </div>
+    <div class="col-sm-8">
+        <h2 class="skay-brand"><a href="/ec/detail/{{ product.id }}">{{ product.name }}</a></h2>
+        <small class="text-success">残り {{ product.stock | intcomma }} 個  </small>
+        <p class="text-danger" style="font-size: 1.4em;">
+            <strong>¥ {{ product.price | intcomma }}</strong>
+        </p>
+    </div>
+    <div class="col-sm-12">
+        <p style="color: gray;">{{ product.description }}</p>
+    </div>
+</div>
+{% endblock %}
