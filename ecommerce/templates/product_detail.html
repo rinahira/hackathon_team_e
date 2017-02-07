@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+<div class="container">
+    <div class="col-sm-3">
+        <a href="/media/{{ product.image }}" data-lightbox="{{ product.image }}" rel="lightbox">
+            <img class="thumbnail" src="/media/{{ product.image }}" alt="" style="width: 100%; max-width: 250px;" border="0" />
+        </a>
+    </div>
+    <div class="col-sm-6">
+        <h2 class="skay-brand">{{ product.name }}</h2>
+        <p style="color: gray;">{{ product.description }}</p>
+    </div>
+    <div class="col-sm-3 well well-lg" style="padding-top: 20px;">
+        <p class="text-danger" style="font-size: 1.6em;">
+            <strong>¥ {{ product.price | intcomma }}</strong>
+        </p>
+        <span class="text-success" style="font-size: 1.2em;">残り {{ product.stock | intcomma }} 個</span>
+        <form class="form-inline skay-cartform" action="../cart_add/{{ product.id }}/" method="post" style="margin-top: 25px;">
+            {% csrf_token %}
+            <span>数量: </span>
+            <div class="input-group" style="width: 100px;">
+                <input name="quantity" type="number" class="form-control" required max="10" min="1" value="1">
+                <div class="input-group-addon">個</div>
+            </div>
+            <button type="submit" class="btn btn-success" style="display: block; margin-top: 10px; width: 100%;">
+                <i class="glyphicon glyphicon-shopping-cart"></i>
+                カートに入れる
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

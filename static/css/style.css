@@ -19,7 +19,8 @@ ul {
 }
 
 .skay-product-list > li {
-    min-height: 500px;
+    max-height: 500px;
+    min-height: 400px;
 }
 
 .skay-brand {
